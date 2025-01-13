@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bolero Historiek Export",
+  "version": "1.0",
+  "description": "Met deze simpele plugin kan je de historiek van Bolero exporteren naar een CSV bestand.",
+  "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["https://platform.bolero.be/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
