@@ -6,10 +6,8 @@ Deze chrome extension maakt het mogelijk om een export te maken van alle transac
 
 ## Features
 
-- **Feature 1**: Genereert een CSV van alle transacties
-- **Feature 2**: Voegt het makelaarsloon toe (kan voorlopig niet met de Bolero export)
-- **Feature 3**: Voegt de beurstaks toe (kan voorlopig niet met de Bolero export)
-- **Feature 4**: De data wordt standaard nergens online opgeslagen, enkel de CSV wordt lokaal gedownload
+- **Feature 1**: Genereert een CSV van alle transacties van je zichtrekening zoals dividenden, opnemingen, stortingen... met makelaarsloon en beurstaks toegevoegd (kan voorlopig niet met de bolero export)
+- **Feature 2**: Genereert een cCSVsv van alle orders inclusief ISIN nummer
 
 ## Installation
 
@@ -27,8 +25,8 @@ Deze chrome extensie is niet gepubliceerd. Wat wil zeggen dat deze moet geinstal
 
 ## Usage
 
-1. Om de download te starten ga ja naar: https://platform.bolero.be/cash/transaction-history
-2. Open de plugin en klik op "Extract Table Data"
+1. Open de plugin en klik op "Ga naar order historiek" of "Ga naar "Ga naar rekening historiek"
+2. Klik op "orders exporteren" of "rekening transacties exporteren"
 3. De plugin gaat eerste maken dat alle rijen beschikbaar zijn (klikken op de laad meer knop) 
 4. De plugin gaat nu rij per rij de data ophalen, laat dit gerust zijn gang gaan. Als dit te traag gaat kan je de snelheid wijzigen van 2 seconden naar iets lager (in content.js bestand)
 5. Eens alle rijen gecheckt zijn zal chrome automatisch de CSV downloaden
