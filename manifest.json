@@ -6,12 +6,7 @@
   "permissions": ["tabs", "scripting", "activeTab"],
   "host_permissions": ["https://platform.bolero.be/*"],
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
-    }
+    "default_popup": "popup.html"
   },
   "background": {
     "service_worker": "background.js"
