@@ -24,21 +24,39 @@ const loadAllRecords = async () => {
     // Function to extract data from the popup
 // Function to extract data from the popup
 const extractData = () => {
-    // Select the element containing the ISIN information
+    // Select the ISIN, logo, and ticker elements
     const isinElement = document.querySelector(
       "p.hotspot-mini__isin.text--uppercase.text--bold"
     );
+    const logoElement = document.querySelector(
+      "div.hotspot-mini__logo img"
+    );
+    const tickerElement = document.querySelector(
+      "div.hotspot-name h3 span"
+    );
   
     let isin = "N/A";
+    let logo = "N/A";
+    let ticker = "N/A";
   
+    // Extract the ISIN value
     if (isinElement) {
-      // Extract the ISIN value, which is located after "ISIN: "
       const isinText = isinElement.textContent.trim();
       const isinParts = isinText.split(":"); // Split text by ":"
       isin = isinParts[1]?.trim() || "N/A"; // Get the part after "ISIN:"
     }
   
-    return { isin };
+    // Extract the logo URL
+    if (logoElement) {
+      logo = logoElement.src || "N/A"; // Extract the `src` attribute
+    }
+  
+    // Extract the ticker value
+    if (tickerElement) {
+        ticker = tickerElement.textContent.trim().replace(/^\(|\)$/g, ""); // Remove surrounding parentheses
+      }
+  
+    return { isin, logo, ticker };
   };
 
   
@@ -100,7 +118,7 @@ const extractData = () => {
       th.textContent.trim()
     );
   
-    headers.push("isin");
+    headers.push("isin", "logo", "ticker"); // Add new headers
   
     const allData = []; // Array to store all row data
   
@@ -119,11 +137,13 @@ const extractData = () => {
         try {
           firstTdLink.click();
           console.log("Waiting for the popup to load...");
-          await sleep(2000); //Dit kan eventueel verlaagd worden om de snelheid te verhogen, maar 2 seconden is wel een veilige keus. 750ms was voor mij te snel om altijd correcte resultaten te geven -t
+          await sleep(1000); //Dit kan eventueel verlaagd worden om de snelheid te verhogen, maar 2 seconden is wel een veilige keus. 750ms was voor mij te snel om altijd correcte resultaten te geven -t
   
-          const { isin } = extractData();
+          const { isin, logo, ticker } = extractData();
           console.log("Extracted ISIN:", isin);
-          cells.push(isin);git 
+          console.log("Extracted Logo:", logo);
+          console.log("Extracted Ticker:", ticker);
+          cells.push(isin, logo, ticker);
   
           const closeButton = document.querySelector(".link--close-aside");
           if (closeButton) {
